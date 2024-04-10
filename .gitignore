@@ -1,0 +1,11 @@
+# 빌드 출력
+Debug/
+Release/
+x64/
+
+# Visual Studio 설정
+.vs/
+
+# 기타 불필요한 파일
+*.ipch
+*.pdb

@@ -1,0 +1,18 @@
+//
+// XTPApplication1.RC2 - resources Microsoft Visual C++ does not edit directly
+//
+
+#ifdef APSTUDIO_INVOKED
+#error this file is not editable by Microsoft Visual C++
+#endif //APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Add manually edited resources here...
+
+/////////////////////////////////////////////////////////////////////////////
+
+#if !defined (_AFXDLL) || defined(_XTP_STATICLINK)
+#include <XTToolkitPro.rc>
+#endif
+
