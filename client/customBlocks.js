@@ -70,85 +70,79 @@ function updateToolboxWithCustomBlocks(customBlocks) {
   }
 }
 
+// Blockly 블록을 서버로부터 받은 데이터로 동적으로 생성합니다.
+function defineCustomBlocks(customBlocks) {
+  customBlocks.forEach(block => {
+    const blockDefinition = {
+      type: block.func_name,
+      message0: block.func_name,
+      args0: [],
+      colour: 160,
+      tooltip: block.desc || "",
+      previousStatement: null,
+      nextStatement: null,
+      helpUrl: ""
+    };
+
+    let messageIndex = 0;  // func_name은 message0
+
+    // // 더미 입력으로 공백 라인 추가, 각각 %1을 참조해야 합니다.
+    // messageIndex++;
+    // blockDefinition[`message${messageIndex}`] = " %1"; // 첫 번째 더미
+    // blockDefinition[`args${messageIndex}`] = [{ type: "input_dummy" }];
+
+    for (let i = 1; i <= 5; i++) {
+      const nameField = `args${i}_name`;
+      const typeField = `args${i}_type`;
+      const valueField = `args${i}_value`;
+
+      if (block[nameField]) {
+        messageIndex++;
+        const name = block[nameField];
+        const type = block[typeField];
+        const defaultValue = block[valueField];
+        let fieldType = type === "str" ? "field_input" : "field_number";
+
+        blockDefinition[`message${messageIndex}`] = name + ": %1";
+        blockDefinition[`args${messageIndex}`] = [{
+          type: fieldType,
+          name: name.toUpperCase(),
+          value: type === "str" ? (defaultValue || "") : Number(defaultValue || 0)
+        }];
+      }
+    }
+
+    Blockly.Blocks[block.func_name] = {
+      init: function() {
+        this.jsonInit(blockDefinition);
+      }
+    };
+
+    Blockly.Python[block.func_name] = function(b) {
+      const params = [];
+      for (let i = 1; i <= messageIndex; i++) { // 첫 2개 메시지는 더미이므로 3번째부터 시작
+        const field = blockDefinition[`args${i}`][0];
+        let argValue = b.getFieldValue(field.name);
+        if (field.type === "field_number") {
+          argValue = argValue || "0";
+        } else if (field.type === "field_input") {
+          argValue = Blockly.Python.quote_(argValue || "");
+        }
+        params.push(argValue);
+      }
+      return `${block.func_name}(${params.join(', ')})\n`;
+    };
+  });
+
+  updateToolboxWithCustomBlocks(customBlocks);
+}
+
 
 // 서버에서 블록 데이터를 비동기적으로 가져오는 함수
 async function fetchCustomBlocks() {
   const response = await fetch('http://localhost:5000/api/blocks');
   const customBlocks = await response.json();
-
-  // 받은 블록 데이터를 바탕으로 Blockly 블록 정의 및 코드 생성기 구성
-  // customBlocks.js의 fetchCustomBlocks 함수 내부 수정 부분
-
-  customBlocks.forEach(block => {
-    const args0 = [];
-    const message0Parts = [];
-    for (let i = 1; i <= 5; i++) {
-        const type = block[`args${i}_type`];
-        const value = block[`args${i}_value`];
-        if (type) {
-            let inputType = type === "str" ? "field_input" : "field_number";
-            const fieldName = `ARG${i}`;
-            if (type === "str") {
-              // 문자열 타입 필드 생성, 기본값 설정
-              args0.push({
-                  type: inputType,
-                  name: fieldName,
-                  text: value || "" // 빈 문자열이 기본값인 경우를 처리
-              });
-            } else if (type === "int") {
-              // 숫자 타입 필드 생성, 기본값 설정
-              args0.push({
-                  type: inputType,
-                  name: fieldName,
-                  value: Number(value) || 0 // null, undefined, 또는 빈 문자열을 0으로 처리
-              });
-            }
-            message0Parts.push(`%${i}`);
-        }
-    }
-
-    const blockDefinition = {
-        type: block.func_name,
-        message0: `${block.func_name} ${message0Parts.join(' ')}`,
-        args0,
-        inputsInline: true,
-        previousStatement: null,
-        nextStatement: null,
-        colour: 160,
-        tooltip: block.desc,
-        helpUrl: ""
-    };
-
-    Blockly.Blocks[block.func_name] = {
-        init: function() {
-            this.jsonInit(blockDefinition);
-        }
-    };
-
-    Blockly.Python[block.func_name] = function(b) {
-      const args = [];
-      for (let i = 1; i <= 5; i++) {
-        if (block[`args${i}_type`]) {
-          // Blockly에서 필드 값(문자열 또는 숫자)을 가져옵니다.
-          let argValue = b.getFieldValue(`ARG${i}`);
-          // 타입에 따라 처리 방식을 구분합니다.
-          if (block[`args${i}_type`] === "int") {
-            // int 타입의 경우, 값이 없으면 "0"을 기본값으로 사용합니다.
-            argValue = argValue || "0";
-          } else if (block[`args${i}_type`] === "str") {
-            // str 타입의 경우, 값이 비어있지 않다면 문자열을 적절히 처리하고, 비어있다면 빈 문자열을 기본값으로 사용합니다.
-            argValue = argValue ? Blockly.Python.quote_(argValue) : '""';
-          }
-          args.push(argValue);
-        }
-      }
-      return `${block.func_name}(${args.join(', ')})\n`;
-    };    
-    
-  });
-
-  // 동적으로 툴박스 업데이트
-  updateToolboxWithCustomBlocks(customBlocks);
+  defineCustomBlocks(customBlocks);
 }
 
 // 서버로부터 블록 데이터를 가져오는 함수 호출
