@@ -44,7 +44,7 @@ Blockly.defineBlocksWithJsonArray([
     "type": "automation_init",
     "message0": "Init",
     "nextStatement": null,
-    "colour": 160,
+    "colour": 50,
     "tooltip": "Initializes something.",
     "helpUrl": ""
   },
@@ -52,7 +52,7 @@ Blockly.defineBlocksWithJsonArray([
     "type": "automation_close",
     "message0": "Close",
     "previousStatement": null,
-    "colour": 160,
+    "colour": 50,
     "tooltip": "Closes the resource.",
     "helpUrl": ""
   }

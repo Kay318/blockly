@@ -6,7 +6,7 @@ const toolbox = {
       {
         "kind": "category",
         "name": "Automations",
-        "colour": 160,
+        "colour": 50,
         "contents": [
           {
             "kind": "block",
@@ -174,6 +174,21 @@ const toolbox = {
         "cssConfig": {
           "container": "hide-category"
         }
+      },
+      {
+        "kind": "category",
+        "name": "Text",
+        "colour": 160,
+        "contents": [
+          {
+            "kind": "block",
+            "type": "text_print"
+          },
+          {
+            "kind": "block",
+            "type": "text"
+          }
+        ]
       }
     ]
   };

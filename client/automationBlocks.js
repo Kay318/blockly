@@ -24,7 +24,7 @@ function defineCustomBlocks(customBlocks) {
             type: block.func_name,
             message0: block.func_name,
             args0: [],
-            colour: 160,
+            colour: 50,
             tooltip: block.desc || "",
             previousStatement: null,
             nextStatement: null,
