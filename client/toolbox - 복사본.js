@@ -7,31 +7,30 @@ const toolbox = {
         "kind": "category",
         "name": "Automations",
         "colour": 160,
-        "contents": [
-            {
-            "kind": "block",
-            "type": "automation_setdestination"
-            },
-            {
-                "kind": "block",
-                "type": "automation_gotoscreen"
-            },
-            {
-                "kind": "block",
-                "type": "automation_delay"
-            },
-            // 여기에 추가 커스텀 블록을 계속해서 추가할 수 있습니다.
-        ]
+        "contents": []
       },
       {
         "kind": "category",
-        "name": "Loops",
+        "name": "Custom_Loops",
         "colour": 10,
         "contents": [
           {
             "kind": "block",
             "type": "custom_repeat_basic"
-          },
+          }
+        ]
+      },
+      {
+        "kind": "sep", // 구분선을 시각적으로 표현할 더미 카테고리
+        "name": "──────────", // CSS를 사용하여 이 이름을 스타일링할 수 있습니다.
+        "colour": "#000000", // 구분선 색상 설정
+        "contents": [] // 내용은 비워둠
+      },
+      {
+        "kind": "category",
+        "name": "Loops",
+        "colour": 120,
+        "contents": [
           {
             "kind": "block",
             "type": "controls_repeat_ext"
@@ -47,27 +46,22 @@ const toolbox = {
           {
             "kind": "block",
             "type": "controls_forEach"
-          }
-        ]
-      },
-      {
-        "kind": "category",
-        "name": "Math",
-        "contents": [
-          {
-            "kind": "block",
-            "type": "math_number"
           },
           {
             "kind": "block",
-            "type": "math_arithmetic"
+            "type": "controls_flow_statements"
           }
         ]
       },
       {
         "kind": "category",
         "name": "Logic",
+        "colour": 210,
         "contents": [
+          {
+            "kind": "block",
+            "type": "controls_if"
+          },
           {
             "kind": "block",
             "type": "logic_compare"
@@ -87,22 +81,75 @@ const toolbox = {
           {
             "kind": "block",
             "type": "logic_null"
+          },
+          {
+            "kind": "block",
+            "type": "logic_ternary"
           }
         ]
       },
       {
         "kind": "category",
-        "name": "Text",
+        "name": "Math",
+        "colour": 230,
         "contents": [
           {
             "kind": "block",
-            "type": "text"
+            "type": "math_number"
           },
           {
             "kind": "block",
-            "type": "text_print"
+            "type": "math_arithmetic"
+          },
+          {
+            "kind": "block",
+            "type": "math_single"
+          },
+          {
+            "kind": "block",
+            "type": "math_trig"
+          },
+          {
+            "kind": "block",
+            "type": "math_constant"
+          },
+          {
+            "kind": "block",
+            "type": "math_number_property"
+          },
+          {
+            "kind": "block",
+            "type": "math_round"
+          },
+          {
+            "kind": "block",
+            "type": "math_on_list"
+          },
+          {
+            "kind": "block",
+            "type": "math_modulo"
+          },
+          {
+            "kind": "block",
+            "type": "math_random_int"
+          },
+          {
+            "kind": "block",
+            "type": "math_random_float"
           }
         ]
+      },
+      {
+        "kind": "category",
+        "name": "Variables",
+        "colour": 330,
+        "custom": "VARIABLE"
+      },
+      {
+        "kind": "category",
+        "name": "Functions",
+        "colour": 290,
+        "custom": "PROCEDURE"
       }
     ]
   };

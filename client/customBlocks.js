@@ -43,26 +43,23 @@ Blockly.Python['custom_repeat_basic'] = function(block) {
 function updateToolboxWithCustomBlocks(customBlocks) {
 
   let newToolbox = JSON.parse(JSON.stringify(toolbox)); // 깊은 복사를 사용하여 기존 구조를 유지
+  let automationCategory = newToolbox.contents.find(category => category.name === "Automations");
 
-  // Automations 카테고리를 찾거나 새로 만듭니다.
-  let automationCategory = {
-      "kind": "category",
-      "name": "Automations",
-      "colour": 160,
-      "contents": []
-  };
+  if (automationCategory) {
+    // Init과 Close 블록을 자동으로 첫 번째와 두 번째 위치에 추가합니다.
+    automationCategory.contents.unshift(
+      { "kind": "block", "type": "automation_init" },
+      { "kind": "block", "type": "automation_close" }
+    );
 
-  // 서버에서 받은 커스텀 블록을 Automations 카테고리에 추가합니다.
-  customBlocks.forEach(block => {
+    customBlocks.forEach(block => {
       automationCategory.contents.push({
-          "kind": "block",
-          "type": block.func_name
+        "kind": "block",
+        "type": block.func_name
       });
-  });
-
-  // 새로운 툴박스 구조에 Automations 카테고리를 추가합니다.
-  newToolbox.contents.push(automationCategory);
-
+    });
+  }
+  
   // Blockly 툴박스를 새로운 구조로 업데이트합니다.
   // workspace.updateToolbox(newToolbox); 는 Blockly Workspace가 초기화된 후 호출되어야 합니다.
   if (workspace) {
@@ -72,6 +69,35 @@ function updateToolboxWithCustomBlocks(customBlocks) {
 
 // Blockly 블록을 서버로부터 받은 데이터로 동적으로 생성합니다.
 function defineCustomBlocks(customBlocks) {
+  // 기존 블록에 추가할 Init과 Close 블록 정의
+  Blockly.defineBlocksWithJsonArray([
+    {
+      "type": "automation_init",
+      "message0": "Init",
+      "nextStatement": null, // 다음 블록으로 연결 가능
+      "colour": 160,
+      "tooltip": "Initializes something.",
+      "helpUrl": ""
+    },
+    {
+      "type": "automation_close",
+      "message0": "Close",
+      "previousStatement": null, // 이전 블록과 연결 가능
+      "colour": 160,
+      "tooltip": "Closes the resource.",
+      "helpUrl": ""
+    }
+  ]);
+
+  // Python 코드 생성기
+  Blockly.Python['automation_init'] = function(block) {
+    return 'Init()\n';
+  };
+
+  Blockly.Python['automation_close'] = function(block) {
+    return 'Close()\n';
+  };
+
   customBlocks.forEach(block => {
     const blockDefinition = {
       type: block.func_name,

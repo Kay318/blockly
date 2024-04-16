@@ -5,11 +5,13 @@ body, html {
     margin: 0;
     overflow: hidden; /* 화면 전체 스크롤바 제거 */
 }
+
 #blocklyDiv {
     height: 100%;
     width: 70%; /* 브라우저 창의 좌측 50%를 차지하도록 설정 */
     float: left; /* 왼쪽 정렬 */
 }
+
 #codeArea {
     height: 100%;
     width: 30%; /* 나머지 50%를 차지하도록 설정 */
@@ -18,4 +20,8 @@ body, html {
     border-left: solid 1px #ccc; /* 좌측 경계선 추가 */
     padding: 10px; /* 패딩 추가 */
     box-sizing: border-box; /* 패딩을 너비에 포함 */
+}
+
+.hide-category {
+    display: none;
 }
