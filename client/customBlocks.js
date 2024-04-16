@@ -214,6 +214,3 @@ function fetchCustomBlocks() {
   ]
   defineCustomBlocks(customBlocks);
 }
-
-// // 서버로부터 블록 데이터를 가져오는 함수 호출
-// fetchCustomBlocks();
