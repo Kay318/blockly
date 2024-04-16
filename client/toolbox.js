@@ -7,7 +7,16 @@ const toolbox = {
         "kind": "category",
         "name": "Automations",
         "colour": 160,
-        "contents": []
+        "contents": [
+          {
+            "kind": "block",
+            "type": "automation_init"
+          },
+          { 
+            "kind": "block", 
+            "type": "automation_close" 
+          }
+        ]
       },
       {
         "kind": "category",
