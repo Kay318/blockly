@@ -10,14 +10,26 @@
     <script src="./lib/python_compressed.js"></script>
     <script src="./lib/en.js"></script>
     <script src="node_modules/@mit-app-inventor/blockly-plugin-workspace-multiselect/dist/index.js"></script>
+    <script src="node_modules/@blockly/toolbox-search/dist/index.js"></script>
+    <script src="./event/selectedLanguage.js"></script>
     <script src="toolbox.js"></script>
     <script src="customBlocks.js"></script>
     <script src="automationBlocks.js"></script>
     <script src="returnedPython.js"></script>
+    <script src="./event/loadBlk.js"></script>
+    <script src="./event/saveBlk.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="blocklyDiv"></div>
     <pre id="codeArea"></pre> <!-- JavaScript 코드를 표시할 영역 -->
+
+    <!-- 버튼 추가 -->
+    <div class="button-container">
+        <input type="file" id="fileInput" style="display:none;" accept=".blk" onchange="loadFromBlkFile()">
+        <button onclick="document.getElementById('fileInput').click()">열기</button>
+        <button onclick="saveToBlkFile(workspace)">저장</button>
+        <button onclick="saveToBlkFile(workspace)">다른 이름으로 저장</button>
+    </div>
 </body>
 </html>

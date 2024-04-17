@@ -1,19 +1,11 @@
 /* style.css */
 
-body, html {
-    height: 100%;
-    margin: 0;
-    overflow: hidden; /* 화면 전체 스크롤바 제거 */
-}
-
 #blocklyDiv {
-    height: 100%;
     width: 70%; /* 브라우저 창의 좌측 50%를 차지하도록 설정 */
     float: left; /* 왼쪽 정렬 */
 }
 
 #codeArea {
-    height: 100%;
     width: 30%; /* 나머지 50%를 차지하도록 설정 */
     float: right; /* 오른쪽 정렬 */
     overflow: auto; /* 내용이 넘치면 스크롤바 생성 */
@@ -21,6 +13,42 @@ body, html {
     padding: 10px; /* 패딩 추가 */
     box-sizing: border-box; /* 패딩을 너비에 포함 */
 }
+
+#blocklyDiv, #codeArea {
+    height: 93%;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: auto; /* 필요한 경우 스크롤바 표시 */
+}
+
+
+.button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.button-container button {
+    background-color: #4CAF50; /* 녹색 배경 */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+    background-color: #45a049; /* 버튼 호버 시 색상 */
+}
+
 /* 
 .hide-category {
     display: none;

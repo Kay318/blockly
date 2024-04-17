@@ -4,6 +4,11 @@ const toolbox = {
     "kind": "categoryToolbox",
     "contents": [
       {
+        'kind': 'search',
+        'name': 'Search',
+        'contents': [],
+      },
+      {
         "kind": "category",
         "name": "Automations",
         "colour": 50,
@@ -188,7 +193,10 @@ const toolbox = {
             "kind": "block",
             "type": "text"
           }
-        ]
+        ],
+        "cssConfig": {
+          "container": "hide-category"
+        }
       }
     ]
   };
