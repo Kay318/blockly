@@ -6,15 +6,14 @@
 }
 
 #codeArea {
-    width: 30%; /* 나머지 50%를 차지하도록 설정 */
+    width: 30%; /* 나머지 30%를 차지하도록 설정 */
     float: right; /* 오른쪽 정렬 */
     overflow: auto; /* 내용이 넘치면 스크롤바 생성 */
-    border-left: solid 1px #ccc; /* 좌측 경계선 추가 */
     padding: 10px; /* 패딩 추가 */
     box-sizing: border-box; /* 패딩을 너비에 포함 */
 }
 
-#blocklyDiv, #codeArea {
+#blocklyDiv,#codeArea  {
     height: 93%;
 }
 
@@ -49,7 +48,7 @@ body, html {
     background-color: #45a049; /* 버튼 호버 시 색상 */
 }
 
-/* 
-.hide-category {
+
+/* .hide-category {
     display: none;
 } */

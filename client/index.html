@@ -9,8 +9,8 @@
     <script src="./lib/blocks_compressed.js"></script>
     <script src="./lib/python_compressed.js"></script>
     <script src="./lib/en.js"></script>
-    <script src="node_modules/@mit-app-inventor/blockly-plugin-workspace-multiselect/dist/index.js"></script>
-    <script src="node_modules/@blockly/toolbox-search/dist/index.js"></script>
+    <script src="./lib/@mit-app-inventor/blockly-plugin-workspace-multiselect/dist/index.js"></script>
+    <script src="./lib/@blockly/toolbox-search/dist/index.js"></script>
     <script src="toolbox.js"></script>
     <script src="customBlocks.js"></script>
     <script src="tempBlocks.js"></script>
@@ -29,7 +29,6 @@
         <input type="file" id="fileInput" style="display:none;" accept=".blk" onchange="loadFromBlkFile()">
         <button onclick="document.getElementById('fileInput').click()">열기</button>
         <button onclick="saveToBlkFile(workspace)">저장</button>
-        <button onclick="saveToBlkFile(workspace)">다른 이름으로 저장</button>
     </div>
 </body>
 </html>
