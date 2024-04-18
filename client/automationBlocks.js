@@ -124,6 +124,6 @@ function fetchCustomBlocks() {
         "desc": "\ud654\uba74 \uc774\ub3d9 \ud568\uc218",
         "func_name": "GotoScreen"
         }
-        ]
+    ]
     defineCustomBlocks(customBlocks);
 }
