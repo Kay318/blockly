@@ -2,7 +2,7 @@
 
 let workspace;
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const options = {
         toolbox: toolbox,
         scrollbars: true,
@@ -15,11 +15,11 @@ document.addEventListener("DOMContentLoaded", function() {
             hideIcon: false,
             weight: 3,
             enabledIcon: 'https://github.com/mit-cml/workspace-multiselect/raw/main/test/media/select.svg',
-            disabledIcon: 'https://github.com/mit-cml/workspace-multiselect/raw/main/test/media/unselect.svg'
+            disabledIcon: 'https.com/mit-cml/workspace-multiselect/raw/main/test/media/unselect.svg'
         },
         multiselectCopyPaste: {
             crossTab: true,
-            menu: true
+            menu: true,
         },
     };
 
@@ -31,18 +31,17 @@ document.addEventListener("DOMContentLoaded", function() {
         if (event.type === Blockly.Events.BLOCK_CREATE) {
             const block = workspace.getBlockById(event.blockId);
 
-            if (block) {
+            // 블록 더블클릭 이벤트 설정
+            block.svgGroup_.addEventListener('dblclick', () => {
                 const allBlocks = workspace.getAllBlocks();
                 let lastBlock = null;
 
                 allBlocks.forEach((b) => {
                     if (b === block) return;
 
-                    // xPos이 지정된 고정된 열에 위치한 블록만 정렬 대상으로 고려
                     const bPosX = b.getRelativeToSurfaceXY().x;
-                    if (Math.abs(bPosX - fixedXPos) > 10) return; // xPos가 지정된 열에서 멀어지면 건너뛴다.
+                    if (Math.abs(bPosX - fixedXPos) > 10) return; // 지정된 xPos 열에만 적용
 
-                    // 블록을 연결할 수 있으면 연결 시도
                     if (block.previousConnection && b.nextConnection) {
                         if (!block.previousConnection.isConnected() && !b.nextConnection.isConnected()) {
                             block.previousConnection.connect(b.nextConnection);
@@ -60,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
 
                 if (!block.previousConnection?.isConnected() && !block.nextConnection?.isConnected()) {
-                    // 지정된 xPos 열에 자동 정렬
                     const yOffset = 30;
                     const yPos = lastBlock 
                         ? lastBlock.getRelativeToSurfaceXY().y + lastBlock.getHeightWidth().height + yOffset 
@@ -68,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     block.moveBy(fixedXPos - block.getRelativeToSurfaceXY().x, yPos - block.getRelativeToSurfaceXY().y);
                 }
-            }
+            });
         }
     });
 
