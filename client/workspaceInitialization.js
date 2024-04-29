@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     workspace = Blockly.inject('blocklyDiv', options);
 
+    registerTemplateCallbacks(workspace); // 여기에서 함수 호출
+
     // 각 모듈 호출
     sortBlocksOnDoubleClick(workspace);
     updatePythonCode(workspace);

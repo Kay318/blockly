@@ -17,6 +17,7 @@ function loadFromBlkFile() {
         try {
             // 파일 내용을 읽어서 JSON 객체로 파싱
             const json = JSON.parse(event.target.result);
+            console.log(event.target.result);
             // 현재 워크스페이스를 클리어하고 JSON 데이터로 블록을 로드
             workspace.clear();
             Blockly.serialization.workspaces.load(json, workspace);

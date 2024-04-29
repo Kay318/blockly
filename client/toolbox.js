@@ -34,6 +34,7 @@ const toolbox = {
           }
         ]
       },
+      templatesCategory,      
       {
         "kind": "sep", // 구분선을 시각적으로 표현할 더미 카테고리
         "name": "──────────", // CSS를 사용하여 이 이름을 스타일링할 수 있습니다.
