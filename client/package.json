@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@blockly/theme-dark": "^6.0.6",
+    "@blockly/theme-deuteranopia": "^5.0.7",
     "@blockly/toolbox-search": "^1.2.8",
     "@mit-app-inventor/blockly-plugin-workspace-multiselect": "^0.1.12",
     "blockly": "^10.4.3"

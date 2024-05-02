@@ -6,13 +6,13 @@ const templatesCategory = {
     "contents": [
         {
             "kind": "button",
-            "text": "Load Init and Close",
-            "callbackKey": "myButtonCallback"
+            "text": "Init and Close",
+            "callbackKey": "initClose"
         },
         {
             "kind": "button",
-            "text": "Load Another Template",
-            "callbackKey": "loadAnotherTemplate"
+            "text": "SetDestination",
+            "callbackKey": "setDestination"
         }
     ]
 };
