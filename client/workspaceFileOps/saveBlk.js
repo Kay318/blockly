@@ -10,7 +10,7 @@ function saveToBlkFile(workspace) {
     const blob = new Blob([jsonString], {type: "application/json"});
     
     if (currentFileName) {
-        filename = currentFileName
+        filename = currentFileName;
     }
     else {
         const date = new Date();

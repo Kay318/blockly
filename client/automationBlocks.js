@@ -65,7 +65,7 @@ function defineCustomBlocks(customBlocks) {
             }
         };
 
-        Blockly.Python[block.func_name] = function(b) {
+        Blockly.Python.forBlock[block.func_name] = function(b) {
             const params = [];
             for (let i = 1; i <= messageIndex; i++) { // 첫 2개 메시지는 더미이므로 3번째부터 시작
             const field = blockDefinition[`args${i}`][0];

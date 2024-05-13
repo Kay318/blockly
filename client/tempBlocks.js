@@ -1,6 +1,7 @@
 const customBlocks = [
     {
     "func_name": "SetDestination",
+    "desc": "목적지를 설정하는 함수\r\ndestination: 설정하려는 목적지\r\ndelay: 함수 실행 완료 후 딜레이 시간",
     "args1_name": "destination",
     "args1_type": "str",
     "args1_value": "",
@@ -15,11 +16,11 @@ const customBlocks = [
     "args4_value": null,
     "args5_name": null,
     "args5_type": null,
-    "args5_value": null,
-    "desc": "\ubaa9\uc801\uc9c0\ub97c \uc124\uc815\ud558\ub294 \ud568\uc218\r\ndestination: \uc124\uc815\ud558\ub824\ub294 \ubaa9\uc801\uc9c0\r\ndelay: \ud568\uc218 \uc2e4\ud589 \uc644\ub8cc \ud6c4 \ub51c\ub808\uc774 \uc2dc\uac04"
+    "args5_value": null
     },
     {
     "func_name": "GotoScreen",
+    "desc": "화면 이동 함수\r\nscreenName: 이동하려는 화면\r\ndelay: 함수 실행 완료 후 딜레이 시간",
     "args1_name": "screenName",
     "args1_type": "str",
     "args1_value": "",
@@ -34,7 +35,6 @@ const customBlocks = [
     "args4_value": null,
     "args5_name": null,
     "args5_type": null,
-    "args5_value": null,
-    "desc": "\ud654\uba74 \uc774\ub3d9 \ud568\uc218"
+    "args5_value": null
     }
 ]

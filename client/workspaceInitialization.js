@@ -24,4 +24,20 @@ document.addEventListener("DOMContentLoaded", function () {
     initializeMultiselect(workspace);
 
     fetchCustomBlocks();
+
+    const template = {
+        "blocks": {
+            "languageVersion": 0,
+            "blocks": [
+                {
+                    "type": "automation_init",
+                    "id": "GnBZhXKeRPJ-Rho;_?5-",
+                    "x": 500,
+                    "y": 50
+                }
+            ]
+        }
+    };
+
+    Blockly.serialization.workspaces.load(template, workspace);
 });

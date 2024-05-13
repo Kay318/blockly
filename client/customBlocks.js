@@ -31,11 +31,12 @@ Blockly.defineBlocksWithJsonArray([
     }
   ]);
   
-Blockly.Python['custom_repeat_basic'] = function(block) {
+Blockly.Python.forBlock['custom_repeat_basic'] = function(block) {
   var repeats = block.getFieldValue('TIMES') || '0';
   var branch = Blockly.Python.statementToCode(block, 'DO') || '  pass\n';
   return 'for _ in range(' + repeats + '):\n' + branch;
-};
+}; 
+
 
 
 // init, close
@@ -58,10 +59,10 @@ Blockly.defineBlocksWithJsonArray([
   }
 ]);
 
-Blockly.Python['automation_init'] = function(block) {
+Blockly.Python.forBlock['automation_init'] = function(block) {
   return 'Init()\n';
 };
 
-Blockly.Python['automation_close'] = function(block) {
+Blockly.Python.forBlock['automation_close'] = function(block) {
   return 'Close()\n';
 };
